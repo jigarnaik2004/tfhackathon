@@ -11,5 +11,5 @@ variable "sa_name" {
 }
 
 variable "geoRedundancy" {
-    type = bool  
+  type = bool
 }
