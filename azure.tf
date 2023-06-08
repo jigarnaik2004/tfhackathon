@@ -25,3 +25,16 @@ length = 4
 upper = false
 special = false
 }
+
+resource "azurerm_storage_container" "storageContainer1" {
+  count = 3 
+  name = "${var.scontainer_prefix}${count.index}"
+  storage_account_name  = azurerm_storage_account.team2storage.name
+  container_access_type = "private"
+}
+resource "azurerm_storage_container" "storageContainer2" {
+  for_each = toset(var.scontainer_suffixlist)
+  name = "scontainerblob${each.key}"
+  storage_account_name  = azurerm_storage_account.team2storage.name
+  container_access_type = "blob"
+}

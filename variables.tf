@@ -17,3 +17,10 @@ variable "geoRedundancy" {
 variable "scontainer_name"{
    type = string
 }
+variable "scontainer_prefix"{
+   type = string
+   default = "containerprefix"
+}
+variable "scontainer_suffixlist"{
+   type = list
+}
