@@ -14,6 +14,12 @@ resource "azurerm_storage_account" "team2storage" {
   }
 }
 
+resource "azurerm_storage_container" "team2storageContainer" {
+  name                  = var.scontainer_name
+  storage_account_name  = azurerm_storage_account.team2storage.name
+  container_access_type = "private"
+}
+
 resource "random_string" "suffix" {  
 length = 4
 upper = false

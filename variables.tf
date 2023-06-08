@@ -13,3 +13,7 @@ variable "sa_name" {
 variable "geoRedundancy" {
   type = bool
 }
+
+variable "scontainer_name"{
+   type = string
+}
