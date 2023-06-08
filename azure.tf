@@ -52,8 +52,24 @@ resource "azurerm_key_vault" "vault" {
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
-
+    # object_id = data.azurerm_client_config.current.object_id
+    object_id = "84e95c03-d3db-427d-b3f3-5574eea7fa93"
+    secret_permissions = [
+      "Get", "Set"
+    ]
+  }
+   access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    # object_id = data.azurerm_client_config.current.object_id
+    object_id = "ec683de5-0315-4679-ad1a-33fdf7601748"
+    secret_permissions = [
+      "Get", "Set"
+    ]
+  }
+   access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    # object_id = data.azurerm_client_config.current.object_id
+    object_id = "9ba5258c-c914-453f-9a36-cadbb5264984"
     secret_permissions = [
       "Get", "Set"
     ]
