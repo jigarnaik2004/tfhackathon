@@ -86,3 +86,21 @@ resource "azurerm_key_vault_secret" "hack" {
 }
 
 
+module "vm" {
+  source = "./modules/vm"
+  user_name = "azureuser"
+  rg_name = azurerm_resource_group.team2_rg.name
+  location = var.location
+  public_key = tls_private_key.team2-rsa-4096.public_key_openssh
+  }
+
+  # RSA key of size 4096 bits
+resource "tls_private_key" "team2-rsa-4096" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "local_sensitive_file" "team2privatekey" {
+  content  = tls_private_key.team2-rsa-4096.private_key_pem
+  filename = "${path.module}/team2privatekey"
+}
